@@ -48,7 +48,7 @@ Dependencies:
   * redis-server >= 2.8.0
   * nodejs >= 4 LTS
   * nginx
-  * geth (multi-geth)
+  * geth (ethereumsocial)
 
 **I highly recommend to use Ubuntu 16.04 LTS.**
 
@@ -76,13 +76,13 @@ This will install the latest nodejs
     $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
     $ sudo apt-get install -y nodejs
 
-### Install multi-geth
+### Install ethereumsocial
 
-    $ wget https://github.com/ethereumsocial/multi-geth/releases/download/v1.8.4rc1/multi-geth-linux-v1.8.4rc1.zip
-    $ unzip multi-geth-linux-v1.8.4rc1.zip
+    $ wget https://github.com/ethereumsocial/ethereumsocial/releases/download/v1.8.11/ethereum-social-linux-v1.8.11.zip
+    $ unzip ethereum-social-linux-v1.8.11.zip
     $ sudo mv geth /usr/local/bin/geth
 
-### Run multi-geth
+### Run ethereumsocial
 
 If you use Ubuntu, it is easier to control services by using serviced.
 
@@ -96,14 +96,14 @@ Description=Ethereum Social for Pool
 After=network-online.target
 
 [Service]
-ExecStart=/usr/local/bin/geth --social --cache=1024 --rpc --extradata "Mined by <your-pool-domain>" --ethstats "<your-pool-domain>:NewEthereumSocial@stats.ethereumsocial.kr"
+ExecStart=/usr/local/bin/geth --cache=1024 --rpc --extradata "Mined by <your-pool-domain>" --ethstats "<your-pool-domain>:NewEthereumSocial@stats.ethereumsocial.kr"
 User=<your-user-name>
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-Then run multi-geth by the following commands
+Then run ethereumsocial by the following commands
 
     $ sudo systemctl enable ethereumsocial
     $ sudo systemctl start ethereumsocial
